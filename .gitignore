@@ -1,0 +1,40 @@
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# VSCode
+.vscode
+
+# Eclipse
+.project
+.classpath
+.settings
+
+# Idea
+.idea
+*.iml
+*.iws
+*.ipr
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Maven
+target
+
+# Build
+out
+build
+bin
+
+# Other
+*.log
+*.swp
+*.bak
+/output/*
+!/output/.gitkeep
+/system_core.dic
