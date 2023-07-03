@@ -6,7 +6,7 @@
 
 ## セットアップ
 - [Sudachi](https://github.com/WorksApplications/Sudachi)のDictionariesから`sudachi-dictionary-latest-core.zip`をダウンロードする
-- 回答したディレクトリの`system_core.dic`を`./`に配置する
+- 解凍したディレクトリの`system_core.dic`を`./`に配置する
 
 ## WordCloud画像の生成
 - `./src/main/java/com/example/WordCloudBuilderKumo.java`を実行する
