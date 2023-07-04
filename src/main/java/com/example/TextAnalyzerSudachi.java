@@ -49,9 +49,10 @@ public class TextAnalyzerSudachi {
 			for (List<Morpheme> list : tokenizer.tokenizeSentences(Tokenizer.SplitMode.C, strLine)) {
 				for (Morpheme morpheme : list) {
 					List<String> partOfSpeechList = morpheme.partOfSpeech();
-					if (partOfSpeechList.get(1).equals("固有名詞")) {
+					if (partOfSpeechList.get(2).equals("人名")) {
 						String properNoun = morpheme.surface();
 						// System.out.println(properNoun+" : "+String.join(" - ", partOfSpeechList));
+						// System.out.println(properNoun+" : "+partOfSpeechList.get(2));
 						if (resultWordFrequencyMap.containsKey(properNoun)) {
 							int currentFrequency = resultWordFrequencyMap.get(properNoun);
 							resultWordFrequencyMap.replace(properNoun, currentFrequency + 1);
