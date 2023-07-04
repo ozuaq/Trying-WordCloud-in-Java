@@ -13,7 +13,6 @@ import com.worksap.nlp.sudachi.DictionaryFactory;
 import com.worksap.nlp.sudachi.Morpheme;
 import com.worksap.nlp.sudachi.Tokenizer;
 
-
 public class TextAnalyzerSudachi {
 	public static void main(String[] args) {
 		TextAnalyzerSudachi textAnalyzerSudachi = new TextAnalyzerSudachi();
@@ -23,29 +22,27 @@ public class TextAnalyzerSudachi {
 	public Map<String, Integer> wordFrequencyMap(String TextFilePath) {
 		Map<String, Integer> resultWordFrequencyMap = new HashMap<>();
 
-		// 形態素解析器の用意
 		Dictionary dictionary = null;
+
 		try {
-			// 設定ファイル sudachi.json を用意した場合にはそれを読み込む
-			// dictionary = new
-			// DictionaryFactory().create(Files.readString(Paths.get("sudachi.json")));
+			// 形態素解析の辞書を作成
 			dictionary = new DictionaryFactory().create();
-		} catch (Exception e) {
-			System.err.println("辞書が読み込めません: " + e);
-			System.exit(-1);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+
 		Tokenizer tokenizer = dictionary.create();
 
+		// TextFilePathで指定されたファイルの読み込み
 		List<String> strLines = null;
 		try {
 			strLines = Files.readAllLines(Paths.get(TextFilePath), Charset.forName("UTF-8"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+		// 形態素解析
 		for (String strLine : strLines) {
-			// 形態素解析
 			for (List<Morpheme> list : tokenizer.tokenizeSentences(Tokenizer.SplitMode.C, strLine)) {
 				for (Morpheme morpheme : list) {
 					List<String> partOfSpeechList = morpheme.partOfSpeech();

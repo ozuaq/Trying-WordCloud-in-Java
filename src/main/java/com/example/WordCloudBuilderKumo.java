@@ -28,12 +28,14 @@ public class WordCloudBuilderKumo {
     public void createWordCloudImage(String TextFilePath) {
         List<WordFrequency> wordFrequencies = new ArrayList<>();
 
+        // ワードに対する出現頻度のMapを作成
         Map<String, Integer> wordFrequencyMap = textAnalyzerSudachi.wordFrequencyMap(TextFilePath);
 
         for (String key : wordFrequencyMap.keySet()) {
             wordFrequencies.add(new WordFrequency(key, wordFrequencyMap.get(key)));
         }
 
+        // WordCloud画像の生成
         Dimension dimension = new Dimension(600, 600);
         WordCloud wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
         wordCloud.setPadding(2);
